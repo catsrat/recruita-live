@@ -1800,7 +1800,7 @@
         </div>
 
         <div style="display: flex; gap: 1.5rem; font-size: 1.5rem;">
-          <a href="#" style="opacity: 0.7; transition: 0.3s;">
+          <a href="mailto:consult@recruita.info" style="opacity: 0.7; transition: 0.3s;">
             <i class="fas fa-envelope"></i>
           </a>
           <a href="#" style="opacity: 0.7; transition: 0.3s;">
@@ -1831,7 +1831,9 @@
       <p style="color: rgba(255,255,255,0.7); font-size: 0.95rem; margin-bottom: 2rem;">Upload your CV, Passport scan,
         and Cover Letter to begin the Fast-Track process.</p>
 
-      <form id="cvForm" class="custom-form">
+      <form id="cvForm" class="custom-form" action="https://formsubmit.co/consult@recruita.info" method="POST" enctype="multipart/form-data">
+        <input type="hidden" name="_subject" value="New CV Submission!">
+        <input type="hidden" name="_captcha" value="false">
         <div class="form-group">
           <label>Full Name</label>
           <input type="text" name="name" placeholder="e.g. Rahul Sharma" required>
@@ -2023,70 +2025,14 @@
       const cvResult = document.getElementById('cvResult');
 
       if (cvForm) {
-        cvForm.addEventListener('submit', async function (e) {
-          e.preventDefault();
-
-          cvSubmitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
-          cvSubmitBtn.style.opacity = '0.7';
-          cvSubmitBtn.style.pointerEvents = 'none';
-          cvResult.style.display = 'none';
-
-          const fileInput = document.getElementById('cvFile');
-          const file = fileInput.files[0];
-
-          if (!file) {
-            cvResult.style.display = 'block';
-            cvResult.innerHTML = '<span style="color: #ff4d4d; font-size: 0.9rem;">Please select a file to upload.</span>';
-            cvSubmitBtn.innerHTML = 'Secure Submit';
-            cvSubmitBtn.style.opacity = '1';
-            cvSubmitBtn.style.pointerEvents = 'auto';
-            return;
-          }
-
-          // Helper to get Base64
-          const getBase64 = (file) => new Promise((resolve, reject) => {
-            const reader = new FileReader();
-            reader.readAsDataURL(file);
-            reader.onload = () => resolve(reader.result.split(',')[1]);
-            reader.onerror = error => reject(error);
-          });
-
-          try {
-            const base64String = await getBase64(file);
-
-            const payload = {
-              name: cvForm.querySelector('[name="name"]').value,
-              email: cvForm.querySelector('[name="email"]').value,
-              linkedin: cvForm.querySelector('[name="linkedin"]').value || "",
-              fileBase64: base64String,
-              fileName: file.name
-            };
-
-            const response = await fetch('https://script.google.com/macros/s/AKfycby0WP_5-pE7FoOpTaJKHAu9ymdL-d8W7qG4zMTJsj9rdmTE7zgbS9Avbu7aRN7ORNw/exec', {
-              method: 'POST',
-              mode: 'no-cors',
-              headers: {
-                'Content-Type': 'text/plain;charset=utf-8' // Bypasses CORS preflight
-              },
-              body: JSON.stringify(payload)
-            });
-
-            // Assume success if no network error
-            cvForm.innerHTML = `<div style="text-align:center; padding: 2rem;">
-              <i class="fas fa-check-circle text-orange" style="font-size: 3rem; margin-bottom: 1rem;"></i>
-              <h4 class="font-syne text-orange" style="font-size: 1.5rem; margin-bottom: 0.5rem;">Documents Received</h4>
-              <p style="color: rgba(255,255,255,0.8);">Our legal team is reviewing your profile. We will contact you within 24 hours.</p>
-            </div>`;
-          } catch (error) {
-            cvResult.style.display = 'block';
-            cvResult.innerHTML = '<span style="color: #ff4d4d; font-size: 0.9rem;">Network Error. Please try again.</span>';
-            cvSubmitBtn.innerHTML = 'Try Again';
-            cvSubmitBtn.style.opacity = '1';
-            cvSubmitBtn.style.pointerEvents = 'auto';
+        cvForm.addEventListener('submit', function () {
+          if (cvSubmitBtn) {
+            cvSubmitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Securely Sending...';
+            cvSubmitBtn.style.opacity = '0.7';
+            cvSubmitBtn.style.pointerEvents = 'none';
           }
         });
       }
-
       // Interview Form -> FormSubmit.co AJAX (seamless background submission for text-only)
       const interviewForm = document.getElementById('interviewForm');
       const interviewSubmitBtn = document.getElementById('interviewSubmitBtn');
@@ -2104,7 +2050,7 @@
           const formData = new FormData(interviewForm);
 
           try {
-            const response = await fetch('https://formsubmit.co/ajax/pvsheram001@gmail.com', {
+            const response = await fetch('https://formsubmit.co/ajax/consult@recruita.info', {
               method: 'POST',
               headers: {
                 'Accept': 'application/json'
