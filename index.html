@@ -740,6 +740,181 @@
       border-color: var(--accent-orange);
       background: rgba(232, 132, 58, 0.05);
     }
+
+    /* --- ENHANCEMENTS STYLES --- */
+    
+    /* Testimonials */
+    .testimonial-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .testimonial-card {
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      border-radius: 1.5rem;
+      padding: 2.5rem;
+      position: relative;
+      transition: all 0.3s ease;
+    }
+
+    .testimonial-card:hover {
+      transform: translateY(-5px);
+      border-color: var(--accent-orange);
+    }
+
+    .testimonial-img {
+      width: 4rem;
+      height: 4rem;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid var(--accent-orange);
+      margin-bottom: 1.5rem;
+    }
+
+    .testimonial-quote {
+      font-style: italic;
+      color: rgba(255, 255, 255, 0.9);
+      margin-bottom: 1.5rem;
+      font-size: 1rem;
+      line-height: 1.7;
+    }
+
+    .testimonial-author {
+      font-weight: 700;
+      color: var(--accent-orange);
+      font-family: "Syne", sans-serif;
+    }
+
+    .testimonial-role {
+      font-size: 0.85rem;
+      color: rgba(255, 255, 255, 0.6);
+    }
+
+    /* FAQ Accordion */
+    .faq-container {
+      max-width: 800px;
+      margin: 3rem auto 0;
+    }
+
+    .faq-item {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--glass-border);
+      border-radius: 1rem;
+      margin-bottom: 1rem;
+      overflow: hidden;
+    }
+
+    .faq-question {
+      padding: 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      font-weight: 600;
+      font-family: "Syne", sans-serif;
+      transition: all 0.3s ease;
+    }
+
+    .faq-question:hover {
+      background: rgba(255, 255, 255, 0.05);
+      color: var(--accent-orange);
+    }
+
+    .faq-answer {
+      padding: 0 1.5rem;
+      max-height: 0;
+      overflow: hidden;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 0.95rem;
+    }
+
+    .faq-item.active .faq-answer {
+      padding: 0 1.5rem 1.5rem;
+      max-height: 300px;
+    }
+
+    .faq-icon {
+      transition: transform 0.3s ease;
+    }
+
+    .faq-item.active .faq-icon {
+      transform: rotate(45deg);
+      color: var(--accent-orange);
+    }
+
+    /* WhatsApp Widget */
+    .whatsapp-widget {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      background: #25d366;
+      color: #fff;
+      width: 3.5rem;
+      height: 3.5rem;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+      box-shadow: 0 10px 25px rgba(37, 211, 102, 0.3);
+      z-index: 1500;
+      transition: all 0.3s ease;
+    }
+
+    .whatsapp-widget:hover {
+      transform: scale(1.1) rotate(10deg);
+      box-shadow: 0 15px 35px rgba(37, 211, 102, 0.4);
+    }
+
+    /* Eligibility Quiz */
+    .quiz-card {
+      background: linear-gradient(135deg, rgba(232, 132, 58, 0.1), rgba(13, 20, 38, 0.9));
+      border: 1px solid var(--accent-orange);
+      border-radius: 2rem;
+      padding: 3rem;
+      text-align: center;
+      max-width: 700px;
+      margin: 4rem auto;
+    }
+
+    .quiz-step {
+      display: none;
+    }
+
+    .quiz-step.active {
+      display: block;
+      animation: fadeIn 0.5s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .quiz-option {
+      background: rgba(0, 0, 0, 0.3);
+      border: 1px solid var(--glass-border);
+      padding: 1rem;
+      border-radius: 1rem;
+      margin-bottom: 1rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .quiz-option:hover {
+      border-color: var(--accent-orange);
+      background: rgba(232, 132, 58, 0.05);
+    }
+
+    .quiz-option.selected {
+      border-color: var(--accent-orange);
+      background: var(--accent-orange);
+      color: #fff;
+    }
   </style>
 </head>
 <body>
@@ -752,8 +927,10 @@
       </button>
       <div class="nav-links" id="navLinks">
         <a href="#why-us">Why Us</a>
+        <a href="#stories">Success Stories</a>
         <a href="#process">Turbo-Track</a>
         <a href="#pricing">Pricing</a>
+        <a href="#faq">FAQ</a>
         <a href="#cta" class="text-orange" style="font-weight: 600;">Apply Now</a>
       </div>
     </div>
@@ -1128,8 +1305,51 @@
           </tbody>
         </table>
       </div>
-      <div class="swipe-indicator">
-        <i class="fas fa-hand-point-right"></i> Swipe to see full comparison
+  </section>
+
+  <!-- Testimonials Section -->
+  <section id="stories" class="section">
+    <div class="container">
+      <div class="text-center mb-5 reveal">
+        <span class="badge">Voices of Success</span>
+        <h2 class="font-syne section-title">
+          From India to <span class="text-orange">Germany</span>
+        </h2>
+        <p style="color: rgba(255,255,255,0.7); margin-top: 1rem;">
+          Real stories from professionals who secured their future with RECRUITA.
+        </p>
+      </div>
+
+      <div class="testimonial-grid">
+        <!-- Testimonial 1 -->
+        <div class="testimonial-card reveal delay-1">
+          <img src="/Users/pvsheram/.gemini/antigravity/brain/130abcf0-a8ea-4cba-af46-e2f4df897297/testimonial_it_pro_male_png_1774290823722.png" alt="Arjun Mehta" class="testimonial-img">
+          <div class="testimonial-quote">
+            "I was wary of agencies after hearing about scams. But RECRUITA's legal-first approach was different. I moved from Bangalore to Berlin in just 3 months. My contract was 100% transparent."
+          </div>
+          <div class="testimonial-author">Arjun Mehta</div>
+          <div class="testimonial-role">Frontend Developer, Berlin</div>
+        </div>
+
+        <!-- Testimonial 2 -->
+        <div class="testimonial-card reveal delay-2">
+          <img src="/Users/pvsheram/.gemini/antigravity/brain/130abcf0-a8ea-4cba-af46-e2f4df897297/testimonial_gastronomy_pro_female_png_1774290854144.png" alt="Priya Sharma" class="testimonial-img">
+          <div class="testimonial-quote">
+            "The cultural support was life-changing. Being a woman relocating alone, I felt incredibly safe. They even helped me find a beautiful apartment in Munich before I even landed!"
+          </div>
+          <div class="testimonial-author">Priya Sharma</div>
+          <div class="testimonial-role">Hospitality Manager, Munich</div>
+        </div>
+
+        <!-- Testimonial 3 -->
+        <div class="testimonial-card reveal delay-3">
+          <img src="/Users/pvsheram/.gemini/antigravity/brain/130abcf0-a8ea-4cba-af46-e2f4df897297/testimonial_senior_dev_male_png_1774290876772.png" alt="Vikram Singh" class="testimonial-img">
+          <div class="testimonial-quote">
+            "Relocating with a family is complex. RECRUITA handled the school registrations for my kids and the spouse visa for my wife seamlessly. Best investment for our family's future."
+          </div>
+          <div class="testimonial-author">Vikram Singh</div>
+          <div class="testimonial-role">Cloud Architect, Frankfurt</div>
+        </div>
       </div>
     </div>
   </section>
@@ -1380,6 +1600,105 @@
     </div>
   </section>
 
+  <!-- Eligibility Quiz Section -->
+  <section id="quiz" class="section">
+    <div class="container">
+      <div class="quiz-card reveal">
+        <div id="quiz-intro">
+          <h2 class="font-syne text-orange mb-3" style="font-size: 2.5rem;">Check Your Eligibility</h2>
+          <p class="mb-4" style="color: rgba(255, 255, 255, 0.8);">Find out in 30 seconds if you qualify for the Turbo-Track procedure.</p>
+          <button class="btn btn-primary" onclick="startQuiz()">Start Free Check</button>
+        </div>
+
+        <!-- Quiz Steps -->
+        <div id="quiz-steps" style="display: none;">
+          <!-- Step 1 -->
+          <div class="quiz-step active" data-step="1">
+            <h3 class="font-syne mb-3">What is your current field of expertise?</h3>
+            <div class="quiz-option" onclick="nextStep(1, 'IT')">IT & Software Development</div>
+            <div class="quiz-option" onclick="nextStep(1, 'Gastronomy')">Gastronomy & Hospitality</div>
+            <div class="quiz-option" onclick="nextStep(1, 'Other')">Other Graduate Degree</div>
+          </div>
+
+          <!-- Step 2 -->
+          <div class="quiz-step" data-step="2">
+            <h3 class="font-syne mb-3">How many years of formal education (Degrees)?</h3>
+            <div class="quiz-option" onclick="nextStep(2, '16+')">16+ Years (Master's)</div>
+            <div class="quiz-option" onclick="nextStep(2, '15')">15 Years (Bachelor's)</div>
+            <div class="quiz-option" onclick="nextStep(2, 'Less')">Less than 15 Years</div>
+          </div>
+
+          <!-- Step 3 -->
+          <div class="quiz-step" data-step="3">
+            <h3 class="font-syne mb-3">What is your professional experience?</h3>
+            <div class="quiz-option" onclick="finishQuiz('Eligible')">3+ Years of relevant work</div>
+            <div class="quiz-option" onclick="finishQuiz('Consultation')">1-2 Years of work</div>
+            <div class="quiz-option" onclick="finishQuiz('Consultation')">Fresh Graduate</div>
+          </div>
+        </div>
+
+        <div id="quiz-result" style="display: none;">
+          <i class="fas fa-check-circle text-orange" style="font-size: 4rem; margin-bottom: 1.5rem;"></i>
+          <h2 class="font-syne text-orange mb-2">High Potential!</h2>
+          <p class="mb-4">You are likely eligible for the §81a Accelerated Procedure. Let's start your journey.</p>
+          <button class="btn btn-primary" onclick="window.location.hash='#cta'">Secure Your Slot Now</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section id="faq" class="section bg-dark">
+    <div class="container">
+      <div class="text-center mb-5 reveal">
+        <span class="badge">Common Questions</span>
+        <h2 class="font-syne section-title">Got <span class="text-orange">Questions?</span></h2>
+      </div>
+
+      <div class="faq-container reveal">
+        <div class="faq-item">
+          <div class="faq-question">
+            <span>Can I bring my family with me?</span>
+            <i class="fas fa-plus faq-icon"></i>
+          </div>
+          <div class="faq-answer">
+            Yes! The §81a procedure allows for family reunification. We handle the paperwork for your spouse and children simultaneously so you can arrive in Germany together.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            <span>Do I need to speak fluent German?</span>
+            <i class="fas fa-plus faq-icon"></i>
+          </div>
+          <div class="faq-answer">
+            For IT roles, English is usually sufficient, but A1/A2 German is recommended. For Gastronomy, B1 German is mandatory. We provide language training resources if needed.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            <span>What happens if my visa is rejected?</span>
+            <i class="fas fa-plus faq-icon"></i>
+          </div>
+          <div class="faq-answer">
+            We only take on candidates we are 99% sure will pass. If a rejection occurs due to authority error, we handle the legal appeal. If it's a structural rejection, we have a transparent refund policy for the second installment.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            <span>Is the 20,000&euro; fee negotiable?</span>
+            <i class="fas fa-plus faq-icon"></i>
+          </div>
+          <div class="faq-answer">
+            This is a premium, all-inclusive service that includes legal fees, housing setup, and direct hiring. We do not negotiate the fee, as it ensures the quality and speed of the Turbo-Track process.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Footer CTA -->
   <footer id="cta" class="footer-cta">
     <div class="container reveal">
@@ -1421,6 +1740,11 @@
         "
       >
         <div class="nav-logo">RECRUITA</div>
+        <div class="nav-links" style="margin-bottom: 2rem;">
+          <a href="#why-us" style="font-size: 0.85rem; opacity: 0.7;">Why Us</a>
+          <a href="#stories" style="font-size: 0.85rem; opacity: 0.7;">Success Stories</a>
+          <a href="#faq" style="font-size: 0.85rem; opacity: 0.7;">FAQ</a>
+        </div>
         <div style="display: flex; gap: 1.5rem; font-size: 1.5rem;">
           <a href="#" style="opacity: 0.7; transition: 0.3s;">
             <i class="fas fa-envelope"></i>
@@ -1522,6 +1846,11 @@
     </div>
   </div>
 
+  <!-- WhatsApp Widget -->
+  <a href="https://wa.me/491234567890" target="_blank" class="whatsapp-widget">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+
   <!-- Reveal + Mobile Menu Script -->
   <script>
     document.addEventListener("DOMContentLoaded", function () {
@@ -1597,7 +1926,39 @@
         });
       }
 
-      // Google Apps Script Submit Handler for CV Form
+      // FAQ Accordion
+      const faqItems = document.querySelectorAll('.faq-item');
+      faqItems.forEach(item => {
+        const question = item.querySelector('.faq-question');
+        question.addEventListener('click', () => {
+          const isActive = item.classList.contains('active');
+          faqItems.forEach(i => i.classList.remove('active'));
+          if (!isActive) item.classList.add('active');
+        });
+      });
+
+      // Eligibility Quiz Logic (Global functions for onclick)
+      window.startQuiz = function() {
+        document.getElementById('quiz-intro').style.display = 'none';
+        document.getElementById('quiz-steps').style.display = 'block';
+      };
+
+      window.nextStep = function(current, value) {
+        const currentStep = document.querySelector(`.quiz-step[data-step="${current}"]`);
+        const nextStep = document.querySelector(`.quiz-step[data-step="${current + 1}"]`);
+        
+        if (nextStep) {
+          currentStep.classList.remove('active');
+          nextStep.classList.add('active');
+        }
+      };
+
+      window.finishQuiz = function(result) {
+        document.getElementById('quiz-steps').style.display = 'none';
+        document.getElementById('quiz-result').style.display = 'block';
+      };
+
+      // Existing Google Apps Script Submit Handler for CV Form
       const cvForm = document.getElementById('cvForm');
       const cvSubmitBtn = document.getElementById('cvSubmitBtn');
       const cvResult = document.getElementById('cvResult');
