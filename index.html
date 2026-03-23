@@ -815,6 +815,24 @@
       color: rgba(255, 255, 255, 0.6);
     }
 
+    .testimonial-avatar {
+      width: 4rem;
+      height: 4rem;
+      border-radius: 50%;
+      background: rgba(232, 132, 58, 0.1);
+      color: var(--accent-orange);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 1.25rem;
+      font-family: "Syne", sans-serif;
+      border: 2px solid var(--accent-orange);
+      margin-bottom: 1.5rem;
+      text-transform: uppercase;
+      box-shadow: 0 0 15px var(--accent-glow);
+    }
+
     /* FAQ Accordion */
     .faq-container {
       max-width: 800px;
@@ -1345,7 +1363,7 @@
       <div class="testimonial-grid">
         <!-- Testimonial 1 -->
         <div class="testimonial-card reveal delay-1">
-          <img src="/Users/pvsheram/.gemini/antigravity/brain/130abcf0-a8ea-4cba-af46-e2f4df897297/testimonial_it_pro_male_png_1774290823722.png" alt="Arjun Mehta" class="testimonial-img">
+          <div class="testimonial-avatar">AM</div>
           <div class="testimonial-quote">
             "I was wary of agencies after hearing about scams. But RECRUITA's legal-first approach was different. I moved from Bangalore to Berlin in just 3 months. My contract was 100% transparent."
           </div>
@@ -1355,7 +1373,7 @@
 
         <!-- Testimonial 2 -->
         <div class="testimonial-card reveal delay-2">
-          <img src="/Users/pvsheram/.gemini/antigravity/brain/130abcf0-a8ea-4cba-af46-e2f4df897297/testimonial_gastronomy_pro_female_png_1774290854144.png" alt="Priya Sharma" class="testimonial-img">
+          <div class="testimonial-avatar">PS</div>
           <div class="testimonial-quote">
             "The cultural support was life-changing. Being a woman relocating alone, I felt incredibly safe. They even helped me find a beautiful apartment in Munich before I even landed!"
           </div>
@@ -1365,7 +1383,7 @@
 
         <!-- Testimonial 3 -->
         <div class="testimonial-card reveal delay-3">
-          <img src="/Users/pvsheram/.gemini/antigravity/brain/130abcf0-a8ea-4cba-af46-e2f4df897297/testimonial_senior_dev_male_png_1774290876772.png" alt="Vikram Singh" class="testimonial-img">
+          <div class="testimonial-avatar">VS</div>
           <div class="testimonial-quote">
             "Relocating with a family is complex. RECRUITA handled the school registrations for my kids and the spouse visa for my wife seamlessly. Best investment for our family's future."
           </div>
@@ -1373,6 +1391,7 @@
           <div class="testimonial-role">Cloud Architect, Frankfurt</div>
         </div>
       </div>
+
     </div>
   </section>
 
